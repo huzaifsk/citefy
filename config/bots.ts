@@ -1,0 +1,167 @@
+export interface BotDefinition {
+  id: string;
+  name: string;
+  owner: string;
+  botType: 'search' | 'training';
+  robotsUserAgent: string;
+  probeUserAgent: string;
+  description: string;
+  isAnswerEngine: boolean;
+}
+
+export const AI_BOTS: BotDefinition[] = [
+  // Search & Answer Bots (High severity if blocked)
+  {
+    id: 'oai-search',
+    name: 'OAI-SearchBot',
+    owner: 'OpenAI (ChatGPT Search)',
+    botType: 'search',
+    robotsUserAgent: 'OAI-SearchBot',
+    probeUserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko; compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot)',
+    description: 'Used by ChatGPT Search to surface real-time web results for queries',
+    isAnswerEngine: true,
+  },
+  {
+    id: 'chatgpt-user',
+    name: 'ChatGPT-User',
+    owner: 'OpenAI (ChatGPT Browsing)',
+    botType: 'search',
+    robotsUserAgent: 'ChatGPT-User',
+    probeUserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko; compatible; ChatGPT-User/1.0; +https://openai.com/bot)',
+    description: 'Triggered when a user in ChatGPT asks to browse or read a specific URL',
+    isAnswerEngine: true,
+  },
+  {
+    id: 'perplexity-bot',
+    name: 'PerplexityBot',
+    owner: 'Perplexity AI',
+    botType: 'search',
+    robotsUserAgent: 'PerplexityBot',
+    probeUserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)',
+    description: 'Crawls pages for Perplexity AI answer generation and citations',
+    isAnswerEngine: true,
+  },
+  {
+    id: 'perplexity-user',
+    name: 'Perplexity-User',
+    owner: 'Perplexity AI (Live Browse)',
+    botType: 'search',
+    robotsUserAgent: 'Perplexity-User',
+    probeUserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko; compatible; Perplexity-User/1.0; +https://perplexity.ai)',
+    description: 'Triggered during real-time Perplexity answer synthesis',
+    isAnswerEngine: true,
+  },
+  {
+    id: 'claude-search',
+    name: 'Claude-SearchBot',
+    owner: 'Anthropic (Claude Search)',
+    botType: 'search',
+    robotsUserAgent: 'Claude-SearchBot',
+    probeUserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-SearchBot/1.0; +https://anthropic.com/bot)',
+    description: 'Used by Anthropic Claude for real-time web citations',
+    isAnswerEngine: true,
+  },
+  {
+    id: 'claude-user',
+    name: 'Claude-User',
+    owner: 'Anthropic (Claude Fetch)',
+    botType: 'search',
+    robotsUserAgent: 'Claude-User',
+    probeUserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko; compatible; Claude-User/1.0; +https://anthropic.com/bot)',
+    description: 'Triggered when Claude fetches a page requested directly by a user',
+    isAnswerEngine: true,
+  },
+  {
+    id: 'googlebot',
+    name: 'Googlebot',
+    owner: 'Google (Search & AI Overviews)',
+    botType: 'search',
+    robotsUserAgent: 'Googlebot',
+    probeUserAgent: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+    description: 'Primary crawler for Google Search and Google AI Overviews',
+    isAnswerEngine: true,
+  },
+  {
+    id: 'bingbot',
+    name: 'Bingbot',
+    owner: 'Microsoft (Bing & Copilot)',
+    botType: 'search',
+    robotsUserAgent: 'bingbot',
+    probeUserAgent: 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)',
+    description: 'Powers Microsoft Bing and Copilot web grounding',
+    isAnswerEngine: true,
+  },
+
+  // Training & Model Scraping Bots (Informational only - business choice)
+  {
+    id: 'gptbot',
+    name: 'GPTBot',
+    owner: 'OpenAI (Model Training)',
+    botType: 'training',
+    robotsUserAgent: 'GPTBot',
+    probeUserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)',
+    description: 'Crawls content used to train future OpenAI foundation models',
+    isAnswerEngine: false,
+  },
+  {
+    id: 'claudebot',
+    name: 'ClaudeBot',
+    owner: 'Anthropic (Model Training)',
+    botType: 'training',
+    robotsUserAgent: 'ClaudeBot',
+    probeUserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +https://anthropic.com/claudebot)',
+    description: 'Crawls content for training Anthropic foundation models',
+    isAnswerEngine: false,
+  },
+  {
+    id: 'google-extended',
+    name: 'Google-Extended',
+    owner: 'Google (Gemini & Vertex Training)',
+    botType: 'training',
+    robotsUserAgent: 'Google-Extended',
+    probeUserAgent: 'Mozilla/5.0 (compatible; Google-Extended/1.0)',
+    description: 'Controls content access for training Google Gemini models',
+    isAnswerEngine: false,
+  },
+  {
+    id: 'applebot-extended',
+    name: 'Applebot-Extended',
+    owner: 'Apple (Apple Intelligence Training)',
+    botType: 'training',
+    robotsUserAgent: 'Applebot-Extended',
+    probeUserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15 (Applebot-Extended/0.1)',
+    description: 'Controls training data access for Apple Intelligence models',
+    isAnswerEngine: false,
+  },
+  {
+    id: 'ccbot',
+    name: 'CCBot',
+    owner: 'Common Crawl',
+    botType: 'training',
+    robotsUserAgent: 'CCBot',
+    probeUserAgent: 'CCBot/2.0 (https://commoncrawl.org/faq/)',
+    description: 'Open web crawl widely used in foundation model pre-training datasets',
+    isAnswerEngine: false,
+  },
+  {
+    id: 'meta-external',
+    name: 'Meta-ExternalAgent',
+    owner: 'Meta (Llama Training & AI)',
+    botType: 'training',
+    robotsUserAgent: 'Meta-ExternalAgent',
+    probeUserAgent: 'Mozilla/5.0 (compatible; Meta-ExternalAgent/1.1; +https://developers.facebook.com/docs/sharing/bot-traffic/)',
+    description: 'Crawls content for Meta AI and model training',
+    isAnswerEngine: false,
+  },
+  {
+    id: 'bytespider',
+    name: 'Bytespider',
+    owner: 'ByteDance (TikTok AI)',
+    botType: 'training',
+    robotsUserAgent: 'Bytespider',
+    probeUserAgent: 'Mozilla/5.0 (compatible; Bytespider; spider-feedback@bytedance.com)',
+    description: 'ByteDance crawler for Doubao and ByteDance AI models',
+    isAnswerEngine: false,
+  },
+];
+

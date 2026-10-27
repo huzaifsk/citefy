@@ -1,0 +1,18 @@
+# Citeify - AI SEO Audit Tool
+
+> Citeify provides automated, comprehensive AI search readiness audits, checking crawler accessibility, raw HTML renderability, Schema.org entity linking, answer-ready content structures, and classic SEO health.
+
+## Overview
+Citeify evaluates how search engines and AI answer engines (including ChatGPT Search, Perplexity AI, Google AI Overviews, Claude, and Copilot) index, understand, and cite web pages.
+
+## Key Capabilities
+- AI Crawler Access Matrix: Evaluates robots.txt and live firewall status for 15+ search and training bots.
+- Raw HTML Renderability: Verifies content extraction without JavaScript execution.
+- Structured Data & Entity Markup: Validates JSON-LD schema with sameAs knowledge graph profile connections.
+- Answer-Ready Content: Analyzes heading hierarchy, inverted pyramid structures, and scannable lists.
+- Export Formats: Generates client-side PDF, structured Markdown, and JSON.
+
+## Documentation & Links
+- [Audit Engine & Methodology](https://citeify.app/methodology): Explains scoring weights, heuristics, and boundaries.
+- [GitHub Repository](https://github.com/citeify/citeify): Open-source implementation.
+
